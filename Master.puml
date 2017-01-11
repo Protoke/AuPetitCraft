@@ -1,0 +1,71 @@
+@startuml
+
+package Model{
+    class World
+    class Chunk
+
+    abstract Block
+    abstract Translucent
+    abstract Orientable
+    abstract Powerable
+    abstract Interactable
+    abstract CollideCombinable
+    abstract RenderCombinable
+    abstract Strikeable
+    abstract Destroyable
+    abstract StateUpdate
+    abstract StandartBlock
+
+    Block <|-- Translucent
+    Block <|-- Orientable
+    Block <|-- Powerable
+    Block <|-- Interactable
+    Block <|-- CollideCombine
+    Block <|-- RenderCombinable
+    Block <|-- Strikeable
+    Block <|-- Destroyable
+    Block <|-- StateUpdate
+    StandartBlock --|> StateUpdate
+    StandartBlock --|> Destroyable
+    StandartBlock --|> Strikeable
+    StandartBlock --|> RenderCombinable
+    StandartBlock --|> CollideCombinable
+
+    class Stone
+    class Cobblestone
+    Stone --|> StandartBlock
+    Cobblestone --|> StandartBlock
+
+    abstract Entity
+    class EntityPlayer {
+    getPosition()
+    }
+
+    class Position
+    class AbstractPhysics
+
+    EntityPlayer --> Position
+    EntityPlayer --|> Entity
+    Entity --> AbstractPhysics
+    WaterMobPhysics --|> AbstractPhysics
+    LandMobPhysics --|> AbstractPhysics
+    AerialMobPhysics --|> AbstractPhysics
+
+    World o--> "0..*" Chunk
+    Chunk o--> "0..*" Block
+}
+
+package Controller{
+    class Minecraft{
+        runGameLoop()
+        runTick()
+    }
+}
+
+package View{
+    class EntityRenderer{
+        updateCameraAndRender()
+    }
+}
+
+@enduml
