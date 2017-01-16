@@ -37,15 +37,50 @@ package Model{
     Cobblestone --|> StandartBlock
 
     abstract Entity
+    class EntityMinecart
+    class EntityThrowable
+    class EntityFX
+    class EntityWeatherEffect
+    class EntityHanging
+    class EntityLivingBase
     class EntityPlayer {
     getPosition()
     }
+    class EntityLiving
+    class EntityAmbiantCreature
+    class EntityFlying
+    class EntityCreature
+    class EntityMob
+    class EntityWaterMob
+    class EntityGolem
+    class EntityAgeable
+    class EntityAnimal
+    class EntityTameable
+
+    EntityMinecart --|> Entity
+    EntityThrowable --|> Entity
+    EntityFX --|> Entity
+    EntityWeatherEffect --|> Entity
+    EntityHanging --|> Entity
+    EntityLivingBase --|> Entity
+    EntityPlayer --|> EntityLivingBase
+    EntityLiving --|> EntityLivingBase
+    EntityAmbiantCreature --|> EntityLiving
+    EntityFlying --|> EntityLiving
+    EntityCreature --|> EntityLiving
+    EntityMob --|> EntityCreature
+    EntityWaterMob --|> EntityCreature
+    EntityGolem --|> EntityCreature
+    EntityAgeable --|> EntityCreature
+    EntityAnimal --|> EntityAgeable
+    EntityTameable --|> EntityAnimal
 
     class Position
+    class Inventory
     class AbstractPhysics
 
     EntityPlayer --> Position
-    EntityPlayer --|> Entity
+    EntityPlayer --> Inventory
     Entity --> AbstractPhysics
     WaterMobPhysics --|> AbstractPhysics
     LandMobPhysics --|> AbstractPhysics
@@ -66,6 +101,7 @@ package View{
     class EntityRenderer{
         updateCameraAndRender()
     }
+    class WorldRenderer
 }
 
 @enduml
