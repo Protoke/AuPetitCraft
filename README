@@ -1,0 +1,10 @@
+##### Auteurs #####
+    - Ambrosino Gwenaël
+    - Lebrun Enzo
+    - Decolle Anaïs
+    - Auffret Quentin
+
+##### Librairies requises #####
+    - libglfw3-dev
+    - libglew-dev
+    - libglm-dev
