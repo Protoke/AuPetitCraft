@@ -3,7 +3,7 @@ project(AuPetitCraft)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(SOURCE_FILES main.cpp)
+set(SOURCE_FILES main.cpp src/controller/Minecraft.cpp src/controller/Minecraft.h src/model/World.cpp src/model/World.h src/model/Chunk.cpp src/model/Chunk.h src/model/Block.cpp src/model/Block.h src/model/Entity.cpp src/model/Entity.h)
 
 find_package(OpenGL REQUIRED)
 find_package(PkgConfig REQUIRED)
