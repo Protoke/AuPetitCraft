@@ -6,7 +6,7 @@
 #define AUPETITCRAFT_ENTITY_H
 
 
-virtual class Entity {
+class Entity {
 
 };
 

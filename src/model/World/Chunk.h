@@ -5,6 +5,7 @@
 #ifndef AUPETITCRAFT_CHUNK_H
 #define AUPETITCRAFT_CHUNK_H
 
+#include "../Blocks/Block.h"
 
 class Chunk {
     Block* blocks;

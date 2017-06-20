@@ -5,6 +5,7 @@
 #ifndef AUPETITCRAFT_WORLD_H
 #define AUPETITCRAFT_WORLD_H
 
+#include "Chunk.h"
 
 class World {
     Chunk* chunks;
