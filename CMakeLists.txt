@@ -4,29 +4,27 @@ project(AuPetitCraft)
 set(CMAKE_CXX_STANDARD 14)
 
 set(SOURCE_FILES
-        src/controller/Game.cpp
-        src/controller/Game.h
-        src/model/World/World.cpp
-        src/model/World/World.h
-        src/model/World/Chunk.cpp
-        src/model/World/Chunk.h
-        src/model/Blocks/Block.cpp
-        src/model/Blocks/Block.h
-        src/model/Entities/Entity.cpp
-        src/model/Entities/Entity.h
-        src/graphicEngine/GameRenderer.cpp
-        src/graphicEngine/GameRenderer.h
-        src/graphicEngine/BlockRender.cpp
-        src/graphicEngine/BlockRender.h
-        src/model/Blocks/Stone.cpp
-        src/model/Blocks/Stone.h
-        src/Utilities/CustomException.h
-        src/graphicEngine/TextureManager.cpp
-        src/graphicEngine/TextureManager.h
-        src/graphicEngine/Texture.h
-        src/graphicEngine/Shader.h
-        src/graphicEngine/Camera.h
-        )
+        src/client/Launcher.cpp
+        src/client/Launcher.h
+        src/World.cpp
+        src/World.h
+        src/Chunk.cpp
+        src/Chunk.h
+        src/Block.cpp
+        src/Block.h
+        src/Entity.cpp
+        src/Entity.h
+        src/GameRenderer.cpp
+        src/GameRenderer.h
+        src/BlockRender.cpp
+        src/BlockRender.h
+        src/utils/CustomException.h
+        src/TextureManager.cpp
+        src/TextureManager.h
+        src/Texture.h
+        src/Shader.h
+        src/Camera.h
+        src/client/Controls.cpp src/client/Controls.h src/WorldRender.cpp src/WorldRender.h src/client/RenderEngine.cpp src/client/RenderEngine.h)
 
 # TODO : Include SOIL in app
 include_directories(/usr/include/SOIL)

@@ -6,14 +6,15 @@
 #define AUPETITCRAFT_GAME_H
 
 
-#include "../graphicEngine/TextureManager.h"
+#include "../TextureManager.h"
+#include "RenderEngine.h"
 
-class Game {
+
+class Launcher {
 public:
-    Game();
-    void runGameLoop();
-    void runTick();
-    void runRedstoneTick();
+    Launcher() {}
+
+    RenderEngine renderengine_;
 
 
 private:

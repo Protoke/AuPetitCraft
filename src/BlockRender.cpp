@@ -41,18 +41,18 @@ void BlockRender::stopDrawing() {
     drawing_ = false;
 }
 
-void BlockRender::draw(Block b, Shader shaderProgram) {
+void BlockRender::draw(glm::vec3 pos, Shader shaderProgram) {
     if(drawing_ == false)
         glBindVertexArray(VAO_);
 
     // Texture
-    Texture tex = textureManager_.getTexture(b.getTextureId());
+    Texture tex = textureManager_.getTexture(STONE);
     tex.use();
     glUniform1i(glGetUniformLocation(shaderProgram.program_, "ourTexture1"), tex.getLocation());
 
     // Model matrix
     glm::mat4 model;
-    model = glm::translate(model, b.getPosition());
+    model = glm::translate(model, pos);
     shaderProgram.setUniform("model", model);
 
     // Drawing

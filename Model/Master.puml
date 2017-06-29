@@ -101,7 +101,7 @@ package View{
     class EntityRenderer{
         updateCameraAndRender()
     }
-    class WorldRenderer
+    class WorldRender
 }
 
 @enduml

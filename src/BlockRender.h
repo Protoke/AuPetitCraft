@@ -10,9 +10,9 @@
 #include <GL/glew.h>
 #include <glm/detail/type_mat.hpp>
 
-#include "../model/Blocks/Block.h"
 #include "Shader.h"
 #include "TextureManager.h"
+#include "Block.h"
 
 // TODO : Make singleton
 class BlockRender {
@@ -21,7 +21,7 @@ public:
 
     void startDrawing();
     void stopDrawing();
-    void draw(Block b, Shader shaderProgram);
+    void draw(glm::vec3 pos, Shader shaderProgram);
 
 private:
     TextureManager textureManager_;

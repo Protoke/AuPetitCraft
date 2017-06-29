@@ -4,12 +4,13 @@
 
 #include "GameRenderer.h"
 #include "BlockRender.h"
-#include "../model/Blocks/Stone.h"
+#include "Block.h"
+#include "WorldRender.h"
 
 GameRenderer::GameRenderer() {
     memset(keys, 0, sizeof(keys));
 
-    camera = Camera(glm::vec3(0.0f, 0.0f, 3.0f));
+    camera = Camera(glm::vec3(0.0f, 17.0f, 0.0f));
 
     /* Initialisation du contexte */
     GLFWwindow *window;
@@ -17,28 +18,31 @@ GameRenderer::GameRenderer() {
         throw std::logic_error("Unable to init window.");
     }
 
+    World world;
+
     Texture::configTextures();
     TextureManager textureManager;
 
-    textureManager.loadTexture("/home/protoke/Documents/Projet Minecraft/minecraft/textures/blocks/sapling_oak.png", STONE);
+    textureManager.loadTexture("../resources/textures/blocks/stone.png", STONE);
 
-    BlockRender br = BlockRender(textureManager);
+    BlockRender br(textureManager);
+    WorldRender wr(&world, br);
 
     /* Def de trucs utiles pour la boucle */
     // Objets à afficher
 
-    glm::vec3 cubePositions[] = {
-            glm::vec3( 0.0f,  0.0f,  0.0f),
-            glm::vec3( 1.0f,  0.0f,  0.0f),
-            glm::vec3( 0.0f,  1.0f,  0.0f),
-            glm::vec3( 1.0f,  1.0f,  0.0f),
-            glm::vec3(-1.0f,  0.0f,  0.0f),
-            glm::vec3( 0.0f, -1.0f,  0.0f),
-            glm::vec3(-1.0f, -1.0f,  0.0f),
-            glm::vec3( 1.0f, -1.0f,  0.0f),
-            glm::vec3(-1.0f,  1.0f,  0.0f),
-            glm::vec3( 0.0f,  0.0f,  1.0f)
-    };
+//    glm::vec3 cubePositions[] = {
+//            glm::vec3( 0.0f,  0.0f,  0.0f),
+//            glm::vec3( 1.0f,  0.0f,  0.0f),
+//            glm::vec3( 0.0f,  1.0f,  0.0f),
+//            glm::vec3( 1.0f,  1.0f,  0.0f),
+//            glm::vec3(-1.0f,  0.0f,  0.0f),
+//            glm::vec3( 0.0f, -1.0f,  0.0f),
+//            glm::vec3(-1.0f, -1.0f,  0.0f),
+//            glm::vec3( 1.0f, -1.0f,  0.0f),
+//            glm::vec3(-1.0f,  1.0f,  0.0f),
+//            glm::vec3( 0.0f,  0.0f,  1.0f)
+//    };
 
     // shaders
     Shader shaderProgram("/home/protoke/CLionProjects/TestOpenGL/shaders/vertex.vert", "/home/protoke/CLionProjects/TestOpenGL/shaders/fragment.frag");
@@ -68,10 +72,7 @@ GameRenderer::GameRenderer() {
 
         // Affichage de l'objet enregistré dans le VAO
         br.startDrawing();
-        for(GLuint i = 0; i < 10; i++)
-        {
-            br.draw(Stone(cubePositions[i]), shaderProgram);
-        }
+        wr.drawWorld(shaderProgram);
         br.stopDrawing();
 
         // Affichage
